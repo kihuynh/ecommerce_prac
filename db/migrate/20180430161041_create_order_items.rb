@@ -5,7 +5,6 @@ class CreateOrderItems < ActiveRecord::Migration[5.2]
       t.column :product_id, :integer
       t.column :order_id, :integer
 
-      t.timestamps
     end
   end
 end

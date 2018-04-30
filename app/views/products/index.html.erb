@@ -1,0 +1,26 @@
+<div class="home-page section">
+  <div class="container">
+    <% if current_user %>
+
+      <p>Welcome, <%= current_user.email %></p>
+
+
+          <p><%= link_to "Edit Account", '/users/edit', class: "nav-links" %></p> &nbsp;|&nbsp;
+          <p><%= link_to "Sign out", '/users/sign_out', method: 'delete', class: "nav-links" %></p>
+    <% else %>
+        <p><%= link_to "Sign in", '/users/sign_in', class: "nav-links" %></p>
+        &nbsp;|&nbsp;
+        <p><%= link_to "Sign up", '/users/sign_up', class: "nav-links" %></p>
+    <% end %>
+
+    <h1>Products</h1>
+    <% @products.each do |product| %>
+      <p><%= product.name %> | <%= number_to_currency product.price %>
+        <%= form_for @order_item do |f| %>
+          <%= f.hidden_field :product_id, value: product.id %>
+          <%= f.number_field :quantity %>
+          <%= f.submit "Add to cart" %>
+        <% end %></p>
+    <% end %>
+  </div>
+</div>

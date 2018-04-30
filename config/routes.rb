@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
+  devise_for :users
+  root 'products#index'
 
-  resources products do
-    resources order_items
+  resource :cart, only: [:show]
+
+  resources :order_items do
+    resources :orders
   end
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  resources :products
 end
