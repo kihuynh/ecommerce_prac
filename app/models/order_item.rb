@@ -1,6 +1,6 @@
 class OrderItem < ApplicationRecord
-  belongs_to :orders
-  belongs_to :products
+  belongs_to :order
+  belongs_to :product
 end
 
 # has_many
