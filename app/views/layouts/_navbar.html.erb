@@ -1,0 +1,15 @@
+<div class="navbar">
+  <% if current_user %>
+    <p>Welcome, <%= current_user.email %></p>
+    <p><%= link_to "Edit Account", '/users/edit', class: "nav-links" %></p> &nbsp;|&nbsp;
+    <p><%= link_to "Sign out", '/users/sign_out', method: 'delete', class: "nav-links" %></p>
+  <% else %>
+    <p>
+      <%= link_to "Sign in", '/users/sign_in', class: "nav-links" %> &nbsp;|&nbsp;
+      <%= link_to "Sign up", '/users/sign_up', class: "nav-links" %> &nbsp;|&nbsp;&nbsp;
+      <%= link_to "View Cart", '/cart', class: "nav-links" %> &nbsp; | &nbsp;
+      <%= link_to "View Products", '/products', class: "nav-links" %> &nbsp;
+
+    </p>
+  <% end %>
+</div>

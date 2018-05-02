@@ -1,9 +1,36 @@
-<% if @order_items.any? %>
-  <% @order_items.each do |item| %>
-    <p><%= item.product.name %> | <%= link_to "Delete", order_item_path(item), :data => {:confirm => "You sure?", :method => "delete"} %></p>
-    <p> Unit Price: <%= number_to_currency item.product.price %> | Quantity: <%= item.quantity %> | Total Price: <%= number_to_currency (item.product.price * item.quantity) %></p>
-  <% end %>
-  <p>Your Total: <%= number_to_currency current_order.total_price %></p>
-<% else %>
-  <p>Your shopping cart is empty.</p>
-<% end %>
+<div class="section container cart-page">
+  <div class="box">
+    <% if @order_items.any? %>
+      <% @order_items.each do |item| %>
+        <div class="row columns">
+          <div class="column is-half product_name">
+            <p>
+              <strong>Product Name</strong><br>
+              <%= item.product.name %> <br>
+            </p>
+          </div>
+          <div class="column is-fourth product_price">
+            <p><strong>Quantity</strong></p>
+            <p><%= item.quantity %></p>
+          </div>
+          <div class="column is-fourth product_price">
+            <p><strong>Price</strong></p>
+            <p><%= number_to_currency (item.product.price * item.quantity) %></p>
+            <p>(<%= number_to_currency item.product.price %> ea.)</p>
+          </div>
+        </div>
+        <hr>
+      <% end %>
+      <div class="row columns">
+        <div class="column">
+
+        </div>
+        <div class="column">
+          <p class="total-price">Total: <%= number_to_currency current_order.total_price %></p>
+        </div>
+      </div>
+    <% else %>
+      <p>Your shopping cart is empty.</p>
+    <% end %>
+  </div>
+</div>

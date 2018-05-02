@@ -5,6 +5,14 @@ body {
 .home-page {
   h1 {
     font-size: 5vh;
-    text-align: center;
+    text-align: left;
+  }
+
+  strong {
+    font-size: 1.4vh;
+  }
+
+  .input {
+    margin-top: 5px;
   }
 }
