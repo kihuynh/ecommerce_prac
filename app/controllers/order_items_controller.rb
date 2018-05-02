@@ -4,8 +4,16 @@ class OrderItemsController < ApplicationController
     @order = current_order
     @item = @order.order_items.new(item_params)
     @order.save
+
+    # if @order.save
+    #   respond_to do |format|
+    #     format.html { redirect_to products_path }
+    #     format.js
+    #   end
+    # end
+
     session[:order_id] = @order.id
-    redirect_to products_path
+    redirect_to root_path
   end
 
   def destroy

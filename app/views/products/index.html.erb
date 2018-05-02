@@ -13,8 +13,8 @@
                 <%= f.number_field :quantity, class: "input" %> <br><br>
               </div>
               <div class="column is-two-fifth">
-                <%= f.submit "Add", class: "button is-info is-rounded add-remove" %>
-                <%= f.submit "Remove", class: "button is-danger is-rounded add-remove" %>
+                <%= f.submit "Add", class: "button is-info is-rounded add-remove", remote: true %>
+                <%= f.submit "Remove", class: "button is-danger is-rounded add-remove", remote: true %>
               </div>
             </div>
           <% end %>
@@ -49,6 +49,8 @@
             <% end %>
             <hr>
             <h3 class="total-price"><strong>Total: </strong><%= number_to_currency current_order.total_price %></h3>
+
+            <%= button_to "Checkout", charges_path, class: "button is-success is-slightly-rounded" %>
           <% else %>
             <p>Your cart is empty.</p>
           <% end %>
