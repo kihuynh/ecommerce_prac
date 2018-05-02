@@ -65,3 +65,6 @@ gem 'faker'
 gem "bulma-rails", "~> 0.7.1"
 gem 'devise'
 gem 'rest-client'
+
+# Stripe
+gem 'stripe'
