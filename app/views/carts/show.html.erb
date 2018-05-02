@@ -29,6 +29,7 @@
           <p class="total-price">Total: <%= number_to_currency current_order.total_price %></p>
         </div>
       </div>
+      <%= link_to "Checkout", new_charge_path, class: "button is-success is-slightly-rounded" %>
     <% else %>
       <p>Your shopping cart is empty.</p>
     <% end %>
