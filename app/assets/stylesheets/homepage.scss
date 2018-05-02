@@ -8,11 +8,35 @@ body {
     text-align: left;
   }
 
-  strong {
+  h2 {
+    font-size: 2.4vh;
+  }
+
+  h3 {
+    font-size: 1.8vh;
+  }
+
+  .total-price {
+    text-align: right;
+  }
+
+  .product-label {
     font-size: 1.4vh;
+    font-weight: bold;
   }
 
   .input {
     margin-top: 5px;
+  }
+
+  img {
+     height: 40px;
+     width: 40px;
+   }
+
+  .add-remove {
+    display: inline-block;
+    margin: 0 0.25vw;
+    width: 5vw;
   }
 }
