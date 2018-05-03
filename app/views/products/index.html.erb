@@ -4,57 +4,55 @@
   <div class="row columns">
     <div class="column">
       <div class="box">
-        <% @products.each do |product| %>
-          <span class="product-label"><%= product.name %></span> | <%= number_to_currency product.price %>
-          <%= form_for @order_item do |f| %>
+        <%= render "layouts/product_list" %>
+      </div>
+    </div>
+
+    <div class="column">
+      <div class="box">
+        <h2>Your Cart: </h2>
+        <% if @order_items.any? %>
+          <div class="row columns label-row">
+            <div class="column is-one-fifth">
+              <p class="cart-label">Delete Item</p>
+            </div>
+            <div class="column is-two-fifths product_name">
+              <p class="cart-label">Product Name</p>
+            </div>
+            <div class="column is-one-fifth product_price">
+              <p class="cart-label">Quantity</p>
+            </div>
+            <div class="column is-one-fifth product_price">
+              <p class="cart-label">Price</p>
+            </div>
+          </div>
+
+          <% @order_items.each do |item| %>
             <div class="row columns">
-              <div class="column is-three-fifths">
-                <%= f.hidden_field :product_id, value: product.id %>
-                <%= f.number_field :quantity, class: "input" %> <br><br>
+              <div class="column is-one-fifth">
+                <%= link_to image_tag("trash.png", :alt => "trash", class: "trash"), order_item_path(item), :data => {:confirm => "You sure?", :method => "delete"} %>
               </div>
-              <div class="column is-two-fifth">
-                <%= f.submit "Add", class: "button is-info is-rounded add-remove", remote: true %>
-                <%= f.submit "Remove", class: "button is-danger is-rounded add-remove", remote: true %>
+              <div class="column is-two-fifths product_name">
+                <%= item.product.name %> <br>
               </div>
+              <div class="column is-one-fifth product_price">
+                <%= item.quantity %> <br>
+              </div>
+              <div class="column is-one-fifth product_price">
+                <%= number_to_currency (item.product.price * item.quantity) %> <br>
+                (<%= number_to_currency item.product.price %> ea.)
+              </div>
+
             </div>
           <% end %>
+          <hr>
+          <h3 class="total-price">Total: <%= number_to_currency current_order.total_price %></h3>
+
+          <%= button_to "Checkout", charges_path, class: "button is-success is-slightly-rounded checkout" %>
+        <% else %>
+          <p>Your cart is empty.</p>
         <% end %>
-        </div>
       </div>
-
-      <div class="column">
-        <div class="box">
-          <h2>Your Cart: </h2>
-          <% if @order_items.any? %>
-            <% @order_items.each do |item| %>
-              <div class="row columns">
-                <div class="column is-one-fifth">
-                  <%= link_to image_tag("trash.png", :alt => "trash"), order_item_path(item), :data => {:confirm => "You sure?", :method => "delete"} %>
-                </div>
-                <div class="column is-two-fifths product_name">
-                  <p><strong>Product Name</strong></p>
-                  <%= item.product.name %> <br>
-                </div>
-                <div class="column is-one-fifth product_price">
-                <p><strong>Quantity</strong></p>
-                  <%= item.quantity %> <br>
-                </div>
-                <div class="column is-one-fifth product_price">
-                <p><strong>Price</strong></p>
-                  <%= number_to_currency (item.product.price * item.quantity) %> <br>
-                  (<%= number_to_currency item.product.price %> ea.)
-                </div>
-
-              </div>
-            <% end %>
-            <hr>
-            <h3 class="total-price"><strong>Total: </strong><%= number_to_currency current_order.total_price %></h3>
-
-            <%= button_to "Checkout", charges_path, class: "button is-success is-slightly-rounded" %>
-          <% else %>
-            <p>Your cart is empty.</p>
-          <% end %>
-        </div>
-      </div>
+    </div>
   </div>
 </div>

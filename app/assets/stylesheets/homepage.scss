@@ -4,16 +4,24 @@ body {
 
 .home-page {
   h1 {
-    font-size: 5vh;
+    font-size: 3em;
     text-align: left;
   }
 
   h2 {
-    font-size: 2.4vh;
+    font-size: 2em;
   }
 
   h3 {
-    font-size: 1.8vh;
+    font-size: 1.5em;
+  }
+
+  .label-row {
+    margin-top: 0.5em;
+  }
+
+  .cart-label {
+    font-weight: bold;
   }
 
   .total-price {
@@ -21,22 +29,51 @@ body {
   }
 
   .product-label {
-    font-size: 1.4vh;
+    font-size: 1em;
     font-weight: bold;
   }
 
   .input {
-    margin-top: 5px;
+    width: 75%;
   }
 
-  img {
-     height: 40px;
-     width: 40px;
-   }
+
+  .quantity {
+    display: block;
+  }
+
+
+  .trash {
+    display: block;
+    margin: 0 auto;
+    height: 25px;
+  }
 
   .add-remove {
     display: inline-block;
     margin: 0 0.25vw;
     width: 5vw;
   }
+
+  .plus-button {
+    height: 40px;
+    width: 40px;
+    img {
+      display: inline-block;
+      margin: 0 auto;
+    }
+    align-items: flex-end;
+    background-color: transparent;
+    border: none;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  .checkout {
+    display: block;
+    margin-left: 84%;
+    margin-top: 1em;
+  }
+
 }
