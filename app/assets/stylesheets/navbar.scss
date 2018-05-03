@@ -4,6 +4,15 @@ nav.navbar {
   height: 5%;
   position: relative;
 
+  a {
+    color: lightgoldenrodyellow;
+
+    &:hover {
+      color: gold;
+      font-weight: bold;
+    }
+  }
+
   .nav-links {
     color: white;
     font-weight: 500;
@@ -36,5 +45,4 @@ nav.navbar {
       }
     }
   }
-
 }

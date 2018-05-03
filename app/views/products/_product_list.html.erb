@@ -17,13 +17,14 @@
       <%= number_to_currency product.price %>
     </div>
 
-      <%= form_for @order_item do |f| %>
-        <div class="column quantity-field">
-          <%= f.hidden_field :product_id, value: product.id %>
-          <%= f.number_field :quantity, class: "input" %>
+    <%= form_for @order_item, remote: true do |f| %>
+      <div class="column quantity-field">
+        <%= f.hidden_field :product_id, value: product.id %>
+        <%= f.number_field :quantity, :required => true, class: "input"  %>
 
-          <%= f.button image_tag("plus.png", :alt => "plus"), class: "plus-button", remote: true %>
-        </div>
-      <% end %>
+        <%#= f.button image_tag("plus.png", :alt => "plus"), class: "plus-button" %>
+        <%= f.submit "Add to cart" %>
+      </div>
+    <% end %>
   </div>
 <% end %>

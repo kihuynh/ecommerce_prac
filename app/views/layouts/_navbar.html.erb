@@ -27,6 +27,7 @@
     </div>
     <div class="navbar-end">
       <div class="navbar-item">
+        <p><%= render 'layouts/shoppingcart', remote: true%></p>&nbsp;|&nbsp;
         <p><%= link_to "View Cart", '/cart', class: "nav-links" %></p> &nbsp;|&nbsp;
         <p><%= link_to "Edit Account", '/users/edit', class: "nav-links" %></p> &nbsp;|&nbsp;
         <p><%= link_to "Sign out", '/users/sign_out', method: 'delete', class: "nav-links" %></p>
